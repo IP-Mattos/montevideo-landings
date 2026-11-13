@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-rubro="gastronomia-mostrador" data-design="horno-bevel">
+<html lang="es" data-rubro="gastronomia-mostrador" data-design="horno-tile">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -108,6 +108,8 @@ p,li,blockquote,figcaption{text-wrap:pretty}
 @media (max-width:420px){.eg-nav .eg-btn span{display:none}}
 .eg-nav-in:has(.eg-links--pages){flex-wrap:wrap;column-gap:16px}
 .eg-head h1{font-size:clamp(2.1rem,5.4vw,3.4rem)}
+.eg-ty-huge .eg-head h1{font-size:clamp(2.6rem,5.6vw,4.8rem);letter-spacing:-.04em}
+.eg-hd-split .eg-head h1{flex:1 1 380px;margin:0}
 .eg-root .eg-arriving{transition:opacity .65s cubic-bezier(.2,.7,.2,1) var(--eg-arrive-d,0s),transform .65s cubic-bezier(.2,.7,.2,1) var(--eg-arrive-d,0s)}
 .eg-root .eg-arrive{opacity:0;transform:translateY(20px)}
 @media (prefers-reduced-motion:reduce){.eg-root .eg-arrive{opacity:1;transform:none}.eg-root .eg-arriving{transition:none}}
@@ -196,14 +198,13 @@ p,li,blockquote,figcaption{text-wrap:pretty}
 .eg-faq summary::after{content:"";flex:none;width:30px;height:30px;border-radius:50%;background:var(--eg-accent-soft) var(--eg-plus) center/16px no-repeat;transition:transform .2s}
 .eg-faq details[open] summary::after{transform:rotate(45deg)}
 .eg-faq details p{padding:0 0 22px;color:var(--eg-sec-mute);max-width:40em}
+.eg-faq--cols{max-width:none;column-gap:56px}
+.eg-faq--cols details{break-inside:avoid}
+@media (min-width:900px){.eg-faq--cols{columns:2}
+}
 .eg-cta{position:relative}
+.eg-cta-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding-top:44px;padding-bottom:44px}
 .eg-cta h2{font-size:clamp(1.6rem,4vw,2.3rem);max-width:18em}
-.eg-cta--panel{background:var(--eg-paper);color:var(--eg-ink);padding:8px 0 56px}
-.eg-pn{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px 40px;padding:44px 36px;border-radius:calc(var(--eg-rc,24px) + 6px)}
-.eg-pn-eb{display:block;margin-bottom:14px;font:700 12px/1 var(--eg-body);letter-spacing:.16em;text-transform:uppercase;overflow-wrap:anywhere}
-.eg-pn h2{font-size:clamp(1.8rem,4.4vw,3.6rem);letter-spacing:-.04em;max-width:14em}
-.eg-pn>*{min-width:0}
-@media (min-width:900px){.eg-pn{padding:56px 64px}}
 .eg-foot{background:var(--eg-dark);color:var(--eg-dark-mute);padding:52px 0 32px;font-size:14.5px;line-height:1.55}
 .eg-foot--fab{padding-bottom:96px}
 .eg-foot-in{display:grid;gap:32px}
@@ -226,9 +227,20 @@ p,li,blockquote,figcaption{text-wrap:pretty}
 @keyframes eg-bob{50%{transform:translateY(-3px)}}
 @keyframes eg-flap{0%,100%{transform:skewX(0)}50%{transform:skewX(-2.4deg)}}
 @keyframes eg-flick{0%,92%,100%{opacity:1}94%{opacity:.78}96%{opacity:1}98%{opacity:.85}}
-.eg-dv-diag .eg-sec::before,.eg-dv-diag .eg-cta:not(.eg-cta--center)::before{content:"";position:absolute;left:0;right:0;top:-63px;height:64px;background:var(--eg-sec-bg);clip-path:polygon(0 0,100% 100%,0 100%);pointer-events:none}
-.eg-dv-diag .eg-sec{position:relative}
-.eg-dv-diag{--eg-dvh:64px}
+.eg-rd-sm{--eg-rc:10px}
+.eg-bt-crisp{--eg-r-btn:6px}
+.eg-ty-huge .eg-hero h1{font-size:min(clamp(3rem,7.2vw,6.4rem),var(--eg-fit));letter-spacing:-.045em;line-height:1}
+.eg-ty-huge .eg-hero .eg-em{white-space:normal}
+.eg-ty-huge .eg-head h2{font-size:clamp(2.2rem,4.4vw,4rem);letter-spacing:-.04em}
+.eg-ty-huge .eg-sec{padding:96px 0}
+.eg-hd-split .eg-head{max-width:none;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 48px}
+.eg-hd-split .eg-head::before{content:attr(data-eb);flex:0 0 100%;font:700 12px/1 var(--eg-body);letter-spacing:.16em;text-transform:uppercase;color:var(--eg-link)}
+.eg-hd-split .eg-tone-accent .eg-head::before{color:var(--eg-on-accent)}
+.eg-hd-split .eg-head h2{flex:1 1 380px;margin:0}
+.eg-hd-split .eg-head p{flex:0 1 330px;margin:0}
+.eg-dv-slant .eg-sec::before,.eg-dv-slant .eg-cta:not(.eg-cta--center)::before{content:"";position:absolute;left:0;right:0;top:-43px;height:44px;background:var(--eg-sec-bg);clip-path:polygon(0 100%,100% 0,100% 100%);pointer-events:none}
+.eg-dv-slant .eg-sec{position:relative}
+.eg-dv-slant{--eg-dvh:44px}
 /* A hero is laid out many ways (a window or a card can sit flush on its foot): the section after it starts straight, with no divider. */
 .eg-root .eg-hero+.eg-sec::before,.eg-root .eg-hero+.eg-cta::before{display:none}
 .eg-btn:focus-visible{clip-path:none}
@@ -236,11 +248,11 @@ p,li,blockquote,figcaption{text-wrap:pretty}
 .eg-bs-arrow .eg-btn:hover::after{transform:translateX(4px)}
 :is(.eg-box,.eg-step,.eg-ct-i,.eg-pn){--eg-bdc:var(--eg-sec-fg);--eg-ibg:var(--eg-sec-bg)}
 :is(.eg-card,.eg-slip,.eg-mapb-card,.eg-cs,.eg-svl-row,.eg-bn,.eg-win,.eg-feat,.eg-lg-tk){--eg-bdc:var(--eg-ink);--eg-ibg:var(--eg-paper)}
-.eg-bd-r16{--eg-rc:16px}
+.eg-bd-tbar :is(.eg-card,.eg-slip,.eg-mapb-card,.eg-cs,.eg-svl-row,.eg-bn,.eg-win,.eg-feat,.eg-lg-tk,.eg-box,.eg-step,.eg-ct-i,.eg-pn){border-top:7px solid var(--eg-accent);border-radius:6px;box-shadow:none}
 .eg-root{--eg-eb:var(--eg-link);counter-reset:eg-sec}
 .eg-tone-accent{--eg-eb:var(--eg-on-accent)}
 :is(.eg-tg-dash,.eg-tg-bracket,.eg-tg-num,.eg-tg-dot,.eg-tg-pill,.eg-tg-box,.eg-tg-underline,.eg-tg-slash,.eg-tg-star) .eg-head::before{display:block;flex:0 0 100%;margin-bottom:12px;font:700 12px/1.2 var(--eg-body);letter-spacing:.16em;text-transform:uppercase;color:var(--eg-eb)}
-.eg-tg-slash .eg-head::before{content:"/ " attr(data-eb)}
+.eg-tg-dash .eg-head::before{content:"\2014  " attr(data-eb)}
 .eg-root:is(.eg-tg-pill,.eg-tg-box,.eg-tg-underline) .eg-head{display:block}
 .eg-root:is(.eg-tg-pill,.eg-tg-box,.eg-tg-underline) .eg-head::before{content:attr(data-eb);width:fit-content;max-width:100%}
 .eg-fc-bold :focus-visible{outline:5px solid var(--eg-accent-d);outline-offset:2px}
@@ -315,6 +327,7 @@ p,li,blockquote,figcaption{text-wrap:pretty}
 .eg-bg-ondas,.eg-bg-ondas .eg-tone-paper,.eg-bg-ondas .eg-tone-tint{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'90'%20height%3D'40'%3E%3Cpath%20d%3D'M0%2012%20Q15%200%2030%2012%20T60%2012%20T90%2012%20M0%2032%20Q15%2020%2030%2032%20T60%2032%20T90%2032'%20fill%3D'none'%20stroke%3D'rgb(0%2C0%2C0)'%20stroke-opacity%3D'.05'%20stroke-width%3D'1.2'%2F%3E%3C%2Fsvg%3E");background-size:90px 40px}
 .eg-dn-aireada{--eg-space:1.3;--eg-type:1.05}
 .eg-root:is(.eg-dn-compacta,.eg-dn-aireada) .eg-sec{padding:calc(80px*var(--eg-space)) 0}
+.eg-root:is(.eg-dn-compacta,.eg-dn-aireada).eg-ty-huge .eg-sec{padding:calc(96px*var(--eg-space)) 0}
 .eg-root:is(.eg-dn-compacta,.eg-dn-aireada) .eg-hero{padding:calc(40px*var(--eg-space)) 0 calc(64px*var(--eg-space))}
 .eg-root:is(.eg-dn-compacta,.eg-dn-aireada) :is(.eg-cards,.eg-svl-list,.eg-zz-list){gap:calc(20px*var(--eg-space))}
 .eg-root:is(.eg-dn-compacta,.eg-dn-aireada) :is(.eg-bn-item,.eg-box,.eg-slip,.eg-cs,.eg-ct-i){padding-block:calc(28px*var(--eg-space))}
@@ -340,8 +353,8 @@ p,li,blockquote,figcaption{text-wrap:pretty}
 </head>
 <body>
 
-<div class="eg-root eg-sh-bevel eg-fr-notch eg-dc-disc eg-rd-md eg-ic-round eg-bt-soft eg-dv-diag eg-ty-std eg-hd-stack eg-wd-boxed eg-tx-none eg-mo-glide eg-rv-slide eg-hv-underline eg-en-slide eg-pal-custom-09xf111 eg-bs-arrow eg-bd-r16 eg-tg-slash eg-fc-bold eg-lh-pill eg-iy-plain eg-bg-ondas eg-dn-aireada" data-eg-shape="bevel" data-eg-motion="glide" data-eg-palette="custom-09xf111"  data-eg-structure="mosaico" data-eg-sections="2">
-<header class="eg-nav"><div class="eg-wrap eg-nav-in"><a class="eg-logo" href="#inicio"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></i><span>Alita Pastelería</span></a><nav class="eg-links" aria-label="Secciones"><a href="#servicios">Consultas</a><a href="#galeria">Galería</a><a href="#preguntas">Preguntas</a></nav><a class="eg-btn eg-btn--nav" href="https://wa.me/59891653305?text=%C2%A1Hola!%20%C2%BFQu%C3%A9%20tienen%20hoy%3F"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span>WhatsApp</span></a></div></header>
+<div class="eg-root eg-sh-tile eg-fr-round eg-dc-square eg-rd-sm eg-ic-soft eg-bt-crisp eg-dv-slant eg-ty-huge eg-hd-split eg-wd-boxed eg-tx-none eg-mo-glide eg-rv-slide eg-hv-underline eg-en-slide eg-pal-custom-09xf111 eg-bs-arrow eg-bd-tbar eg-tg-dash eg-fc-bold eg-lh-pill eg-iy-plain eg-bg-ondas eg-dn-aireada" data-eg-shape="tile" data-eg-motion="glide" data-eg-palette="custom-09xf111"  data-eg-structure="mosaico" data-eg-sections="4">
+<header class="eg-nav"><div class="eg-wrap eg-nav-in"><a class="eg-logo" href="#inicio"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></i><span>Alita Pastelería</span></a><nav class="eg-links" aria-label="Secciones"><a href="#servicios">Consultas</a><a href="#catalogo">Catálogo</a><a href="#galeria">Galería</a><a href="#preguntas">Preguntas</a><a href="#opiniones">Opiniones</a></nav><a class="eg-btn eg-btn--nav" href="https://wa.me/59891653305?text=%C2%A1Hola!%20%C2%BFQu%C3%A9%20tienen%20hoy%3F"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span>WhatsApp</span></a></div></header>
 <main id="inicio">
 <section class="eg-hero eg-hero--sueltas"><div class="eg-sl"><div class="eg-sl-copy">
 <p class="eg-kicker">Pastelería y café en Montevideo</p>
@@ -351,13 +364,145 @@ p,li,blockquote,figcaption{text-wrap:pretty}
 <p class="eg-facts"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><i>Prudencio Vázquez y Vega <span class="nw">1031, Montevideo</span></i></span><span class="eg-gmark"><i>★ 5,0 en Google</i></span></p>
 </div><div class="eg-sl-table"><figure class="eg-sl-c eg-sl-ph"><div class="eg-sl-img"><img src="img/op-585d63f264734c3a9d7ebd1201e1d200.jpg" alt="Foto de Alita"></div><figcaption>Alita Pastelería</figcaption></figure><div class="eg-sl-c eg-sl-card eg-sl-svc"><span class="eg-sl-lab">Lo que hacemos</span><p class="eg-sl-big">Tortas y pastelería</p><p>Tortas, tartas, brownies y más.</p></div><figure class="eg-sl-c eg-sl-ph"><div class="eg-sl-img"><img src="img/op-5f85d4b2a0cf42dfbb9b7d8e20fc856b.jpg" alt="Foto de Alita"></div><figcaption>Alita Pastelería</figcaption></figure><div class="eg-sl-c eg-sl-card eg-sl-hrs"><span class="eg-sl-lab">Horario</span><ul class="eg-hrs"><li><span>Miércoles a viernes</span><b>11:00–19:00</b></li><li><span>Sábados</span><b>10:00–17:00</b></li></ul></div></div></div></section>
 <section class="eg-sec eg-tone-tint" id="servicios"><div class="eg-wrap"><div class="eg-head" data-eb="Consultas"><h2>Qué podés consultar</h2><p>Escribinos antes de venir.</p></div><div class="eg-bt"><article class="eg-bt-t eg-bt-s"><span class="eg-bt-n">01</span><h3>Tortas y pastelería</h3><p>Tortas, tartas, brownies y más.</p></article><article class="eg-bt-t eg-bt-s"><span class="eg-bt-n">02</span><h3>Alfajores</h3><p>Preguntá qué hay hoy en el mostrador.</p></article><article class="eg-bt-t eg-bt-s"><span class="eg-bt-n">03</span><h3>Salados</h3><p>Preguntá qué salados hay hoy.</p></article><article class="eg-bt-t eg-bt-s"><span class="eg-bt-n">04</span><h3>Café</h3><p>Para tomar con algo dulce.</p></article><article class="eg-bt-t eg-bt-s"><span class="eg-bt-n">05</span><h3>Tortas de casamiento</h3><p>Por encargo.</p></article><div class="eg-bt-t eg-bt-h"><h3>Horario</h3><dl class="eg-hrs"><div><dt>Miércoles a viernes</dt><dd>11:00–19:00</dd></div><div><dt>Sábados</dt><dd>10:00–17:00</dd></div></dl></div><div class="eg-bt-t eg-bt-a"><h3>Dónde estamos</h3><p class="eg-addr">Prudencio Vázquez y Vega <span class="nw">1031, Montevideo</span></p><p>Montevideo</p><div class="eg-acts"><a class="eg-btn eg-btn--cta" href="https://www.openstreetmap.org/?mlat=-34.911798&amp;mlon=-56.161812#map=17/-34.911798/-56.161812">Cómo llegar</a><a class="eg-btn eg-btn--line" href="tel:+59891653305">Llamar</a></div></div><div class="eg-bt-t eg-bt-c"><h3>¿Pasás hoy? Escribinos y preguntá qué hay.</h3><a class="eg-btn eg-btn--cta" href="https://wa.me/59891653305?text=%C2%A1Hola!%20%C2%BFQu%C3%A9%20tienen%20hoy%3F"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Escribir por WhatsApp</a></div></div></div></section>
-<section class="eg-sec eg-tone-paper" id="galeria"><div class="eg-wrap"><div class="eg-head" data-eb="Galería"><h2>Galería</h2></div><div class="eg-gl eg-gl--5"><figure><img src="img/op-585d63f264734c3a9d7ebd1201e1d200.jpg" alt="Foto de Alita"></figure><figure><img src="img/op-5f85d4b2a0cf42dfbb9b7d8e20fc856b.jpg" alt="Foto de Alita"></figure><figure><img src="img/op-114ae559473040f6b15da48d90789eae.jpg" loading="lazy" alt="Foto de Alita"></figure><figure><img src="img/op-639fc0b96d1148c6a2ce14cbe6e0fc12.jpg" loading="lazy" alt="Foto de Alita"></figure><figure><img src="img/op-bc20f02ccd86413da287a8043c3dd3b8.jpg" loading="lazy" alt="Foto de Alita"></figure></div></div></section>
-<section class="eg-sec eg-tone-tint" id="preguntas"><div class="eg-wrap"><div class="eg-head" data-eb="Preguntas"><h2>Preguntas frecuentes</h2></div><div class="eg-faq"><details><summary>¿Qué hay hoy?</summary><p>Escribinos por WhatsApp y preguntá qué hay hoy.</p></details><details><summary>¿Qué días atienden?</summary><p>Miércoles a viernes, 11:00–19:00 · Sábados, 10:00–17:00.</p></details><details><summary>¿Dónde queda?</summary><p>En Prudencio Vázquez y Vega 1031, Montevideo.</p></details></div></div></section>
-<section class="eg-cta eg-cta--panel"><div class="eg-wrap"><div class="eg-pn eg-tone-accent"><div><span class="eg-pn-eb">Alita Pastelería</span><h2>¿Pasás hoy? Escribinos y preguntá qué hay.</h2></div><a class="eg-btn eg-btn--cta" href="https://wa.me/59891653305?text=%C2%A1Hola!%20%C2%BFQu%C3%A9%20tienen%20hoy%3F"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Escribir por WhatsApp</a></div></div></section>
+<section class="eg-sec eg-tone-paper" id="catalogo" data-eg-catalog data-eg-base="https://wa.me/59891653305"><style>.eg-cat-intro{margin-bottom:calc(24px*var(--eg-space,1));max-width:60ch;color:var(--eg-sec-mute);overflow-wrap:anywhere}
+.eg-cat{display:grid;grid-template-columns:minmax(0,1fr);gap:calc(16px*var(--eg-space,1));list-style:none;margin:0;padding:0}
+.eg-cat>*{min-width:0}
+@media (min-width:560px){.eg-cat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:960px){.eg-cat{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.eg-cat-i{display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--eg-sec-line);border-radius:var(--eg-rc,20px);background:var(--eg-sec-card);color:var(--eg-sec-fg)}
+.eg-cat-ph{aspect-ratio:4/3;background:var(--eg-accent-soft)}
+.eg-cat-ph img{display:block;width:100%;height:100%;object-fit:cover}
+.eg-cat-b{display:flex;flex:1;flex-direction:column;gap:6px;padding:calc(18px*var(--eg-space,1))}
+.eg-cat-n{font:600 calc(1.2rem*var(--eg-type,1))/1.25 var(--eg-disp);letter-spacing:-.01em;overflow-wrap:anywhere}
+.eg-cat-l{font-size:calc(15px*var(--eg-type,1));line-height:1.45;color:var(--eg-sec-mute);overflow-wrap:anywhere}
+.eg-cat-p{font:700 calc(1.15rem*var(--eg-type,1))/1.3 var(--eg-disp);letter-spacing:-.01em}
+.eg-cat-a{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:auto;padding-top:10px}
+.eg-cat-add{min-height:44px;padding:0 18px;cursor:pointer}
+.eg-cat-q{display:none;align-items:center;gap:6px}
+.eg-cat-i[data-qty]:not([data-qty="0"]) .eg-cat-q{display:inline-flex}
+.eg-cat-i[data-qty]:not([data-qty="0"]) .eg-cat-add{display:none}
+.eg-cat-sb{width:44px;height:44px;border:1px solid var(--eg-sec-btn-line);border-radius:var(--eg-r-btn);background:transparent;color:var(--eg-sec-fg);font:700 20px/1 var(--eg-body);cursor:pointer}
+.eg-cat-c{min-width:2ch;text-align:center;font:700 1.1rem/1 var(--eg-body)}
+.eg-cat-ask{display:inline-flex;align-items:center;min-height:44px;font:600 15px/1.3 var(--eg-body);color:var(--eg-sec-fg);text-decoration:underline;text-underline-offset:3px}
+.eg-cat--mos{display:block;column-count:1;column-gap:calc(16px*var(--eg-space,1))}
+@media (min-width:560px){.eg-cat--mos{column-count:2}}
+@media (min-width:960px){.eg-cat--mos{column-count:3}}
+.eg-cat--mos .eg-cat-i{display:block;margin:0 0 calc(16px*var(--eg-space,1));break-inside:avoid}
+.eg-cat--mos .eg-cat-i:nth-child(4n+2) .eg-cat-ph{aspect-ratio:3/4}
+.eg-cat--mos .eg-cat-i:nth-child(4n+3) .eg-cat-ph{aspect-ratio:1/1}
+.eg-cat--mos .eg-cat-i:nth-child(4n) .eg-cat-ph{aspect-ratio:4/5}
+.eg-cat--mos .eg-cat-b{display:flex}
+[data-eg-bar] [hidden]{display:none!important}
+.eg-cat-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.eg-cat-lns{list-style:none;margin:0;padding:0}
+.eg-cat-ln{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--eg-sec-line)}
+.eg-cat-ln-n{flex:1;min-width:0;overflow-wrap:anywhere}
+.eg-cat-ln-p{flex:none;font-weight:700;white-space:nowrap}
+.eg-cat-none{margin:12px 0;color:var(--eg-sec-mute)}
+.eg-cat-pth{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--eg-sec-line)}
+.eg-cat-ptt{margin:0;font:700 calc(1.3rem*var(--eg-type,1))/1.2 var(--eg-disp)}
+.eg-cat-pbd{flex:1;min-height:0;padding:8px 18px;overflow-y:auto}
+.eg-cat-pft{display:flex;flex-direction:column;gap:12px;padding:16px 18px;border-top:1px solid var(--eg-sec-line)}
+.eg-cat-pft a{justify-content:center}
+.eg-cat-lock{overflow:hidden}
+.eg-cat-nb{min-width:24px;height:24px;padding:0 6px;border:1px solid currentColor;border-radius:12px;font:700 13px/22px var(--eg-body);text-align:center}
+.eg-cat-fl{position:fixed;right:18px;bottom:96px;z-index:60;color:var(--eg-sec-fg);font-family:var(--eg-body)}
+.eg-cat-fab{position:relative;display:grid;place-items:center;width:60px;height:60px;border:0;border-radius:50%;background:var(--eg-cta);color:var(--eg-cta-ink);box-shadow:0 12px 26px -8px rgb(0 0 0 / .4);cursor:pointer}
+.eg-cat-badge{position:absolute;top:-4px;right:-4px;min-width:24px;height:24px;padding:0 6px;border-radius:12px;background:var(--eg-sec-fg);color:var(--eg-sec-bg);font:700 13px/24px var(--eg-body);text-align:center}
+.eg-cat-sheet{position:absolute;right:0;bottom:72px;display:flex;flex-direction:column;width:min(360px,calc(100vw - 36px));max-height:min(70vh,520px);border:1px solid var(--eg-sec-line);border-radius:var(--eg-rc,20px);background:var(--eg-sec-bg);color:var(--eg-sec-fg);box-shadow:0 18px 44px -10px rgb(0 0 0 / .45)}
+@media (prefers-reduced-motion:no-preference){.eg-cat-sheet:not([hidden]){animation:eg-cat-up .2s ease-out}}
+@keyframes eg-cat-up{from{transform:translateY(12px);opacity:0}to{transform:none;opacity:1}}
+.eg-cat-sum{font:600 1rem/1.3 var(--eg-body)}</style><div class="eg-wrap"><div class="eg-head" data-eb="Catálogo"><h2>Catálogo</h2></div><p class="eg-cat-intro">Armá tu pedido y mandalo por WhatsApp.</p><ul class="eg-cat eg-cat--mos"><li class="eg-cat-i" data-eg-item data-name="Torta de frutas y flores" data-qty="0"><div class="eg-cat-ph"><img src="img/op-cat-6fbe69f509b7409f9a0b573b1402dc32.jpg" alt="Torta de frutas y flores" loading="lazy"></div><div class="eg-cat-b"><h3 class="eg-cat-n">Torta de frutas y flores</h3><p class="eg-cat-l">Con crema, frutas y flores. Consultá por encargo.</p><div class="eg-cat-a"><button type="button" class="eg-btn eg-btn--cta eg-cat-add" data-eg-plus aria-label="Agregar Torta de frutas y flores al pedido">Agregar</button><div class="eg-cat-q" role="group" aria-label="Cantidad de Torta de frutas y flores"><button type="button" class="eg-cat-sb" data-eg-minus aria-label="Quitar una unidad de Torta de frutas y flores">&minus;</button><output class="eg-cat-c" data-eg-qty>0</output><button type="button" class="eg-cat-sb" data-eg-plus aria-label="Agregar una unidad de Torta de frutas y flores">+</button></div><a class="eg-cat-ask" href="https://wa.me/59891653305?text=Hola%2C%20quiero%20consultar%20por%20Torta%20de%20frutas%20y%20flores." target="_blank" rel="noopener">Consultar por WhatsApp</a></div></div></li><li class="eg-cat-i" data-eg-item data-name="Pavlova" data-qty="0"><div class="eg-cat-ph"><img src="img/op-cat-e426d8521ad548e19011d2c498c442ad.jpg" alt="Pavlova" loading="lazy"></div><div class="eg-cat-b"><h3 class="eg-cat-n">Pavlova</h3><p class="eg-cat-l">Merengue, crema y frutos rojos.</p><div class="eg-cat-a"><button type="button" class="eg-btn eg-btn--cta eg-cat-add" data-eg-plus aria-label="Agregar Pavlova al pedido">Agregar</button><div class="eg-cat-q" role="group" aria-label="Cantidad de Pavlova"><button type="button" class="eg-cat-sb" data-eg-minus aria-label="Quitar una unidad de Pavlova">&minus;</button><output class="eg-cat-c" data-eg-qty>0</output><button type="button" class="eg-cat-sb" data-eg-plus aria-label="Agregar una unidad de Pavlova">+</button></div><a class="eg-cat-ask" href="https://wa.me/59891653305?text=Hola%2C%20quiero%20consultar%20por%20Pavlova." target="_blank" rel="noopener">Consultar por WhatsApp</a></div></div></li><li class="eg-cat-i" data-eg-item data-name="Cookie con merengue" data-qty="0"><div class="eg-cat-ph"><img src="img/op-cat-1e3fd637779d497ba1fbb56de92f7136.jpg" alt="Cookie con merengue" loading="lazy"></div><div class="eg-cat-b"><h3 class="eg-cat-n">Cookie con merengue</h3><p class="eg-cat-l">Cookie de chocolate con merengue.</p><div class="eg-cat-a"><button type="button" class="eg-btn eg-btn--cta eg-cat-add" data-eg-plus aria-label="Agregar Cookie con merengue al pedido">Agregar</button><div class="eg-cat-q" role="group" aria-label="Cantidad de Cookie con merengue"><button type="button" class="eg-cat-sb" data-eg-minus aria-label="Quitar una unidad de Cookie con merengue">&minus;</button><output class="eg-cat-c" data-eg-qty>0</output><button type="button" class="eg-cat-sb" data-eg-plus aria-label="Agregar una unidad de Cookie con merengue">+</button></div><a class="eg-cat-ask" href="https://wa.me/59891653305?text=Hola%2C%20quiero%20consultar%20por%20Cookie%20con%20merengue." target="_blank" rel="noopener">Consultar por WhatsApp</a></div></div></li><li class="eg-cat-i" data-eg-item data-name="Alfajores" data-qty="0"><div class="eg-cat-ph"><img src="img/op-cat-a627d1c481f140979b76343cbaed3548.jpg" alt="Alfajores" loading="lazy"></div><div class="eg-cat-b"><h3 class="eg-cat-n">Alfajores</h3><p class="eg-cat-l">Preguntá cuáles hay hoy.</p><div class="eg-cat-a"><button type="button" class="eg-btn eg-btn--cta eg-cat-add" data-eg-plus aria-label="Agregar Alfajores al pedido">Agregar</button><div class="eg-cat-q" role="group" aria-label="Cantidad de Alfajores"><button type="button" class="eg-cat-sb" data-eg-minus aria-label="Quitar una unidad de Alfajores">&minus;</button><output class="eg-cat-c" data-eg-qty>0</output><button type="button" class="eg-cat-sb" data-eg-plus aria-label="Agregar una unidad de Alfajores">+</button></div><a class="eg-cat-ask" href="https://wa.me/59891653305?text=Hola%2C%20quiero%20consultar%20por%20Alfajores." target="_blank" rel="noopener">Consultar por WhatsApp</a></div></div></li><li class="eg-cat-i" data-eg-item data-name="Cajas surtidas" data-qty="0"><div class="eg-cat-ph"><img src="img/op-cat-f6155ec37fe84f3b98dc9ee8e62e21e9.jpg" alt="Cajas surtidas" loading="lazy"></div><div class="eg-cat-b"><h3 class="eg-cat-n">Cajas surtidas</h3><p class="eg-cat-l">Masas y bocaditos para regalar o compartir.</p><div class="eg-cat-a"><button type="button" class="eg-btn eg-btn--cta eg-cat-add" data-eg-plus aria-label="Agregar Cajas surtidas al pedido">Agregar</button><div class="eg-cat-q" role="group" aria-label="Cantidad de Cajas surtidas"><button type="button" class="eg-cat-sb" data-eg-minus aria-label="Quitar una unidad de Cajas surtidas">&minus;</button><output class="eg-cat-c" data-eg-qty>0</output><button type="button" class="eg-cat-sb" data-eg-plus aria-label="Agregar una unidad de Cajas surtidas">+</button></div><a class="eg-cat-ask" href="https://wa.me/59891653305?text=Hola%2C%20quiero%20consultar%20por%20Cajas%20surtidas." target="_blank" rel="noopener">Consultar por WhatsApp</a></div></div></li><li class="eg-cat-i" data-eg-item data-name="Café" data-qty="0"><div class="eg-cat-ph"><img src="img/op-cat-0c41aeb8062d4e42afb35ac1b51b684e.jpg" alt="Café" loading="lazy"></div><div class="eg-cat-b"><h3 class="eg-cat-n">Café</h3><p class="eg-cat-l">Para acompañar algo dulce.</p><div class="eg-cat-a"><button type="button" class="eg-btn eg-btn--cta eg-cat-add" data-eg-plus aria-label="Agregar Café al pedido">Agregar</button><div class="eg-cat-q" role="group" aria-label="Cantidad de Café"><button type="button" class="eg-cat-sb" data-eg-minus aria-label="Quitar una unidad de Café">&minus;</button><output class="eg-cat-c" data-eg-qty>0</output><button type="button" class="eg-cat-sb" data-eg-plus aria-label="Agregar una unidad de Café">+</button></div><a class="eg-cat-ask" href="https://wa.me/59891653305?text=Hola%2C%20quiero%20consultar%20por%20Caf%C3%A9." target="_blank" rel="noopener">Consultar por WhatsApp</a></div></div></li></ul><div class="eg-cat-fl eg-tone-paper" data-eg-bar hidden><button type="button" class="eg-cat-fab" data-eg-open data-eg-label="Ver tu pedido" aria-label="Ver tu pedido" aria-expanded="false" aria-controls="eg-cat-sheet" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6"/><circle cx="9.5" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg><span class="eg-cat-badge" data-eg-badge aria-hidden="true">0</span></button><div class="eg-cat-sheet" id="eg-cat-sheet" role="region" aria-labelledby="eg-cat-st" data-eg-panel hidden><div class="eg-cat-pth"><h3 class="eg-cat-ptt" id="eg-cat-st">Tu pedido</h3><button type="button" class="eg-cat-sb" data-eg-close aria-label="Cerrar pedido">&times;</button></div><div class="eg-cat-pbd"><p class="eg-cat-none" data-eg-none>Todavía no elegiste nada. Sumá productos con «Agregar».</p><ul class="eg-cat-lns" data-eg-lines></ul></div><div class="eg-cat-pft"><p class="eg-cat-sum" data-eg-count aria-live="polite"></p><a class="eg-btn eg-btn--cta" data-eg-send href="https://wa.me/59891653305?text=Hola%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Enviar pedido por WhatsApp</a></div></div><span class="eg-cat-sr" role="status" aria-live="polite" data-eg-live></span></div></div></section>
+<section class="eg-sec eg-tone-tint" id="galeria"><div class="eg-wrap"><div class="eg-head" data-eb="Galería"><h2>Galería</h2></div><div class="eg-gl eg-gl--5"><figure><img src="img/op-585d63f264734c3a9d7ebd1201e1d200.jpg" alt="Foto de Alita"></figure><figure><img src="img/op-5f85d4b2a0cf42dfbb9b7d8e20fc856b.jpg" alt="Foto de Alita"></figure><figure><img src="img/op-114ae559473040f6b15da48d90789eae.jpg" loading="lazy" alt="Foto de Alita"></figure><figure><img src="img/op-639fc0b96d1148c6a2ce14cbe6e0fc12.jpg" loading="lazy" alt="Foto de Alita"></figure><figure><img src="img/op-bc20f02ccd86413da287a8043c3dd3b8.jpg" loading="lazy" alt="Foto de Alita"></figure></div></div></section>
+<section class="eg-sec eg-tone-paper" id="preguntas"><div class="eg-wrap"><div class="eg-head" data-eb="Preguntas"><h2>Preguntas frecuentes</h2></div><div class="eg-faq eg-faq--cols"><details><summary>¿Qué hay hoy?</summary><p>Escribinos por WhatsApp y preguntá qué hay hoy.</p></details><details><summary>¿Qué días atienden?</summary><p>Miércoles a viernes, 11:00–19:00 · Sábados, 10:00–17:00.</p></details><details><summary>¿Dónde queda?</summary><p>En Prudencio Vázquez y Vega 1031, Montevideo.</p></details></div></div></section>
+<section class="eg-sec eg-tone-tint" id="opiniones"><style>.eg-rv{display:grid;gap:calc(18px*var(--eg-space,1));grid-template-columns:minmax(0,1fr)}
+.eg-rv>*{min-width:0}
+.eg-rv-q{display:flex;flex-direction:column;gap:16px;margin:0;min-width:0}
+.eg-rv-q blockquote{margin:0}
+.eg-rv-q blockquote::before{content:"“";display:block;margin-bottom:6px;font:700 3.2rem/.7 var(--eg-disp);color:var(--eg-eb)}
+.eg-rv-q p{font-size:calc(1.05rem*var(--eg-type,1));line-height:1.6;overflow-wrap:anywhere}
+.eg-rv-q p+p{margin-top:.7em}
+.eg-rv-by{margin-top:auto;display:flex;flex-wrap:wrap;gap:2px 8px;align-items:baseline;font-size:14px;color:var(--eg-sec-mute)}
+.eg-rv-by b{font:600 15px/1.3 var(--eg-body);color:var(--eg-sec-fg);overflow-wrap:anywhere}
+.eg-rv-by span{overflow-wrap:anywhere}
+.eg-rv-by b+span::before{content:"· "}
+.eg-rv--ledger{gap:0;max-width:920px}
+.eg-rv--ledger .eg-rv-q{padding:calc(28px*var(--eg-space,1)) 0;border-top:1px solid var(--eg-sec-line)}
+.eg-rv--ledger .eg-rv-q:last-child{border-bottom:1px solid var(--eg-sec-line)}
+.eg-rv--ledger .eg-rv-q blockquote::before{display:none}
+.eg-rv--ledger .eg-rv-q p{font:500 calc(1.2rem*var(--eg-type,1))/1.5 var(--eg-disp);letter-spacing:-.01em}
+@media (min-width:760px){
+  .eg-rv--ledger .eg-rv-q{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:0 36px}
+  .eg-rv--ledger .eg-rv-q blockquote{grid-column:2;grid-row:1}
+  .eg-rv--ledger .eg-rv-by{grid-column:1;grid-row:1;flex-direction:column;align-items:flex-start;margin-top:0}
+  .eg-rv--ledger .eg-rv-by b+span::before{content:none}
+}</style><div class="eg-wrap"><div class="eg-head" data-eb="Opiniones"><h2>Lo que dicen de nosotros</h2></div><div class="eg-rv eg-rv--ledger"><figure class="eg-rv-q"><blockquote><p>Sin dudas la mejor pastelería de Montevideo! Todo delicioso, sin importar si es dulce o salado.</p></blockquote><figcaption class="eg-rv-by"><b>Martina H.</b><span>Google</span></figcaption></figure><figure class="eg-rv-q"><blockquote><p>A los amantes de los alfajores: ESTE ES EL LUGAR.</p></blockquote><figcaption class="eg-rv-by"><b>Irene B.</b><span>Google</span></figcaption></figure><figure class="eg-rv-q"><blockquote><p>Vine por algo rico y me fui con la panza llena, el corazón contento y una caja llena de cosas deliciosas.</p></blockquote><figcaption class="eg-rv-by"><b>Martín</b><span>Google</span></figcaption></figure><figure class="eg-rv-q"><blockquote><p>Preciosa cafetería con delicias increíbles. Excelente atención y buenos precios.</p></blockquote><figcaption class="eg-rv-by"><b>Edith A.</b><span>Google</span></figcaption></figure></div></div></section>
+<section class="eg-cta eg-tone-accent"><div class="eg-wrap eg-cta-in"><h2>¿Pasás hoy? Escribinos y preguntá qué hay.</h2><a class="eg-btn eg-btn--cta" href="https://wa.me/59891653305?text=%C2%A1Hola!%20%C2%BFQu%C3%A9%20tienen%20hoy%3F"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Escribir por WhatsApp</a></div></section>
 </main>
 <footer class="eg-foot eg-foot--fab"><div class="eg-wrap eg-foot-in"><div class="eg-foot-grid"><div class="eg-foot-col"><b>Alita Pastelería</b><p>Café en Montevideo</p></div><div class="eg-foot-col"><table class="eg-foot-hours"><caption>Horario</caption><tbody><tr><th scope="row">Miércoles a viernes</th><td>11:00–19:00</td></tr><tr><th scope="row">Sábados</th><td>10:00–17:00</td></tr></tbody></table></div><div class="eg-foot-col"><p class="eg-foot-h">Dónde estamos</p><p>Prudencio Vázquez y Vega <span class="nw">1031, Montevideo</span></p><p><a href="https://www.openstreetmap.org/?mlat=-34.911798&amp;mlon=-56.161812#map=17/-34.911798/-56.161812">Cómo llegar</a></p></div><div class="eg-foot-col"><p class="eg-foot-h">Contacto</p><p><a class="nw" href="tel:+59891653305">+598 91 653 305</a></p><p><a href="https://wa.me/59891653305?text=%C2%A1Hola!%20%C2%BFQu%C3%A9%20tienen%20hoy%3F">Escribir por WhatsApp</a></p><p><a href="https://www.instagram.com/alitapasteleria.uy/">@alitapasteleria.uy en Instagram</a></p></div></div><div class="eg-foot-base"><span>© 2026 Alita Pastelería</span><span>Página de muestra armada con datos públicos de Alita Pastelería.</span></div></div></footer>
 <a class="eg-wa" href="https://wa.me/59891653305?text=%C2%A1Hola!%20%C2%BFQu%C3%A9%20tienen%20hoy%3F" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 0 1 12 4zm-3.2 4c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.7-.8c-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.6-1.2-1.4-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.3-.5c.1-.2 0-.3 0-.5l-.8-1.8c-.2-.4-.4-.4-.5-.4h-.5z"/></svg></a>
 </div>
+<script>
+(function(){
+var root=document.querySelector("[data-eg-catalog]");
+if(!root)return;
+var base=root.getAttribute("data-eg-base");
+var bar=root.querySelector("[data-eg-bar]");
+if(!base||!bar)return;
+function formatPeso(n){return "$ "+String(n).replace(/\B(?=(\d{3})+(?!\d))/g,".")}
+function buildOrderMessage(lines){var out=["Hola, quiero hacer este pedido:"],total=0,priced=true;lines.forEach(function(l){out.push("\u2022 "+l.qty+" \u00d7 "+l.name);if(typeof l.price==="number"){total+=l.qty*l.price}else{priced=false}});if(priced&&lines.length){out.push("Total: "+formatPeso(total))}return out.join("\n")}
+var items=[].slice.call(root.querySelectorAll("[data-eg-item]"));
+var count=bar.querySelector("[data-eg-count]");
+var send=bar.querySelector("[data-eg-send]");
+function lines(){var out=[];items.forEach(function(li){var q=parseInt(li.getAttribute("data-qty"),10)||0;if(q>0){out.push({name:li.getAttribute("data-name"),qty:q,price:li.hasAttribute("data-price")?Number(li.getAttribute("data-price")):null})}});return out}
+function update(){var ls=lines(),units=0,total=0,priced=true;ls.forEach(function(l){units+=l.qty;if(l.price===null){priced=false}else{total+=l.qty*l.price}});
+bar.hidden=ls.length===0;
+count.textContent=units+(units===1?" producto":" productos")+(priced&&ls.length?" \u00b7 "+formatPeso(total):"");
+send.setAttribute("href",base+(base.indexOf("?")>-1?"&":"?")+"text="+encodeURIComponent(buildOrderMessage(ls)));bar.hidden=false;open.hidden=ls.length===0&&panel.hidden;badge.textContent=String(units);open.setAttribute("aria-label",open.getAttribute("data-eg-label")+(ls.length?", "+count.textContent:""));none.hidden=ls.length>0;count.hidden=ls.length===0;send.hidden=ls.length===0;live.textContent=panel.hidden&&ls.length?count.textContent:"";if(!panel.hidden){paint(lns,true)}}
+root.addEventListener("click",function(e){
+var b=e.target.closest?e.target.closest("[data-eg-plus],[data-eg-minus]"):null;
+if(!b)return;
+var li=b.closest("[data-eg-item]");
+var q=parseInt(li.getAttribute("data-qty"),10)||0;
+var was=q;
+q=b.hasAttribute("data-eg-plus")?Math.min(99,q+1):Math.max(0,q-1);
+li.setAttribute("data-qty",String(q));
+var out=li.querySelector("[data-eg-qty]");
+if(out){out.textContent=String(q)}
+if(was===0&&q>0){var plus=li.querySelector(".eg-cat-q [data-eg-plus]");if(plus){plus.focus()}}
+if(was>0&&q===0){var add=li.querySelector(".eg-cat-add");if(add){add.focus()}}
+update()});
+var open=bar.querySelector("[data-eg-open]"),badge=bar.querySelector("[data-eg-badge]"),panel=bar.querySelector("[data-eg-panel]"),lns=bar.querySelector("[data-eg-lines]"),none=bar.querySelector("[data-eg-none]"),live=bar.querySelector("[data-eg-live]");
+(document.querySelector(".eg-root")||document.body).appendChild(bar);
+function paint(ul,edit){while(ul.firstChild){ul.removeChild(ul.firstChild)}
+items.forEach(function(li,i){var q=parseInt(li.getAttribute("data-qty"),10)||0;if(q<1){return}
+var name=li.getAttribute("data-name"),row=document.createElement("li"),n=document.createElement("span");
+row.className="eg-cat-ln";n.className="eg-cat-ln-n";n.textContent=edit?name:q+" \u00d7 "+name;row.appendChild(n);
+if(edit){row.appendChild(stepper("-",i,name));var c=document.createElement("output");c.className="eg-cat-c";c.textContent=String(q);row.appendChild(c);row.appendChild(stepper("+",i,name))}
+if(li.hasAttribute("data-price")){var p=document.createElement("span");p.className="eg-cat-ln-p";p.textContent=formatPeso(q*Number(li.getAttribute("data-price")));row.appendChild(p)}
+ul.appendChild(row)})}
+function stepper(k,i,name){var b=document.createElement("button");b.type="button";b.className="eg-cat-sb";b.setAttribute("data-i",String(i));b.setAttribute("data-eg-k",k);b.setAttribute("aria-label",(k==="+"?"Agregar una unidad de ":"Quitar una unidad de ")+name);b.textContent=k==="+"?"+":"\u2212";return b}
+function sheet(panel,ov,openers,modal){
+function vis(){return !panel.hidden}
+function mark(v){openers.forEach(function(o){o.setAttribute("aria-expanded",v?"true":"false")})}
+function show(){panel.hidden=false;if(ov){ov.hidden=false}if(modal){document.documentElement.classList.add("eg-cat-lock")}mark(true);paint(lns,true);var f=panel.querySelector("[data-eg-close]");if(f){f.focus()}}
+function hide(){panel.hidden=true;if(ov){ov.hidden=true}document.documentElement.classList.remove("eg-cat-lock");mark(false);var t=openers[0];if(!t||t.hidden){t=root.querySelector(".eg-cat-add")}if(t){t.focus()}}
+document.addEventListener("keydown",function(e){if(!vis()){return}
+if(e.key==="Escape"){e.preventDefault();hide();return}
+if(e.key==="Tab"&&modal){var f=[].slice.call(panel.querySelectorAll("button,a[href]")).filter(function(x){return !x.hidden&&x.getClientRects().length>0});if(!f.length){return}var first=f[0],last=f[f.length-1],at=document.activeElement,inside=panel.contains(at);
+if(e.shiftKey&&(at===first||!inside)){e.preventDefault();last.focus()}else if(!e.shiftKey&&(at===last||!inside)){e.preventDefault();first.focus()}}});
+return{show:show,hide:hide,isOpen:vis}}
+function wire(sh){bar.addEventListener("click",function(e){var t=e.target.closest?e.target.closest("[data-eg-close],[data-eg-k]"):null;if(!t){return}
+if(!t.hasAttribute("data-eg-k")){sh.hide();return}
+var i=parseInt(t.getAttribute("data-i"),10),k=t.getAttribute("data-eg-k"),b=items[i].querySelector(k==="+"?".eg-cat-q [data-eg-plus]":".eg-cat-q [data-eg-minus]");
+if(b){b.click()}
+var again=lns.querySelector('[data-i="'+i+'"][data-eg-k="'+k+'"]');
+if(again){again.focus()}else{var c=bar.querySelector("[data-eg-close]");if(c){c.focus()}}})}
+var sh=sheet(panel,null,[open],false);wire(sh);
+open.addEventListener("click",function(){if(sh.isOpen()){sh.hide()}else{sh.show()}});
+update();
+})();
+</script>
 <script data-eg="reveal">
 (function(){
 var w=window,d=document;

@@ -100,8 +100,13 @@ section.band{background:var(--v-band)}
 .wall{margin-top:88px}
 .wall>.lb{display:flex;align-items:center;gap:14px;margin-bottom:26px}
 .wall>.lb::before{content:"";width:34px;height:1px;background:var(--v-accent2)}
-.wall-cols{column-count:3;column-gap:14px}
-.wall-cols.n3{column-count:3}
+/* An even grid of equal tiles sized to the count (3 and 6 in threes, 4 and 5 in one row): CSS columns stacked two of
+   four photos in one column and left the others short, an empty corner the owner rejected on 2026-11-17. */
+.wall-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.wall-cols .wk{margin:0}
+.wall-cols .wk img{height:100%;aspect-ratio:4/5;object-fit:cover}
+.wall-cols.n4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.wall-cols.n5{grid-template-columns:repeat(5,minmax(0,1fr))}
 
 /* Header: the name at the left, links in the middle, the call to action at the right. */
 .top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--v-bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--v-line)}
@@ -313,7 +318,9 @@ footer ul a:hover{color:var(--v-brand-text)}
 .sb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .rc,.vc,.va{grid-template-columns:minmax(0,1fr);gap:48px}
 .va-frame{max-width:380px}
-.wall-cols{column-count:2}
+.wall-cols,.wall-cols.n4,.wall-cols.n5{grid-template-columns:repeat(2,minmax(0,1fr))}
+.wall-cols.n3 .wk:first-child,.wall-cols.n5 .wk:first-child{grid-column:1/-1}
+.wall-cols.n3 .wk:first-child img,.wall-cols.n5 .wk:first-child img{aspect-ratio:16/10}
 }
 @media (max-width:760px){
 section.block{padding:72px 0}
@@ -361,7 +368,6 @@ h1{font-size:clamp(32px,9.5vw,44px)}
 .sb-grid,.sb-grid.g2,.sb-grid.g4{grid-template-columns:minmax(0,1fr)}
 .sb-work .sb-ph{max-width:78%}
 .sb-work:nth-child(even) .sb-ph{margin-left:auto}
-.wall-cols{column-count:2}
 .vc-ph{max-width:200px}
 .va-frame{max-width:300px}
 }

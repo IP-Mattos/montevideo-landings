@@ -100,8 +100,13 @@ section.band{background:var(--v-band)}
 .wall{margin-top:88px}
 .wall>.lb{display:flex;align-items:center;gap:14px;margin-bottom:26px}
 .wall>.lb::before{content:"";width:34px;height:1px;background:var(--v-accent2)}
-.wall-cols{column-count:3;column-gap:14px}
-.wall-cols.n3{column-count:3}
+/* An even grid of equal tiles sized to the count (3 and 6 in threes, 4 and 5 in one row): CSS columns stacked two of
+   four photos in one column and left the others short, an empty corner the owner rejected on 2026-11-17. */
+.wall-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.wall-cols .wk{margin:0}
+.wall-cols .wk img{height:100%;aspect-ratio:4/5;object-fit:cover}
+.wall-cols.n4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.wall-cols.n5{grid-template-columns:repeat(5,minmax(0,1fr))}
 
 /* Header: the name at the left, links in the middle, the call to action at the right. */
 .top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--v-bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--v-line)}
@@ -227,12 +232,16 @@ blockquote footer{margin-top:16px;font-size:11px;font-weight:600;letter-spacing:
 .ra-rest p{font-size:15.5px;color:var(--v-muted)}
 
 /* Reviews b: museum-label plaques. */
-.rb-wall{column-count:2;column-gap:20px}
-.rb-wall.n1{column-count:1;max-width:560px}
-.rb-plaque{break-inside:avoid;margin:0 0 20px;background:var(--v-bg);border:1px solid var(--v-line);padding:30px 30px 26px;min-width:0;position:relative}
+/* The featured quote across the top, the others in one even row under it: CSS columns left a hole under a long quote. */
+.rb-wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rb-wall.n1{grid-template-columns:minmax(0,1fr);max-width:560px}
+.rb-wall.n2{grid-template-columns:minmax(0,1fr)}
+.rb-wall.n3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.rb-plaque.feat{grid-column:1/-1}
+.rb-plaque{margin:0;background:var(--v-bg);border:1px solid var(--v-line);padding:30px 30px 26px;min-width:0;position:relative}
 .rb-plaque::before{content:"";position:absolute;left:30px;top:-1px;width:44px;height:2px;background:var(--v-accent2)}
 .rb-plaque p{font-size:16.5px;line-height:1.7}
-.rb-plaque.lead p{font-family:var(--v-display);font-size:clamp(21px,2.2vw,27px);line-height:1.4}
+.rb-plaque.feat p{font-family:var(--v-display);font-size:clamp(21px,2.2vw,27px);line-height:1.4;max-width:34em}
 
 /* Reviews c: charcoal, a large quote at the left, the others stacked at the right. */
 .rc{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:80px;align-items:start}
@@ -313,7 +322,9 @@ footer ul a:hover{color:var(--v-brand-text)}
 .sb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .rc,.vc,.va{grid-template-columns:minmax(0,1fr);gap:48px}
 .va-frame{max-width:380px}
-.wall-cols{column-count:2}
+.wall-cols,.wall-cols.n4,.wall-cols.n5{grid-template-columns:repeat(2,minmax(0,1fr))}
+.wall-cols.n3 .wk:first-child,.wall-cols.n5 .wk:first-child{grid-column:1/-1}
+.wall-cols.n3 .wk:first-child img,.wall-cols.n5 .wk:first-child img{aspect-ratio:16/10}
 }
 @media (max-width:760px){
 section.block{padding:72px 0}
@@ -336,7 +347,7 @@ section.block{padding:72px 0}
 .tb-list li,.tc-list li{grid-template-columns:60px minmax(0,1fr);gap:14px;padding:24px 0}
 .ra-rest{grid-template-columns:minmax(0,1fr)}
 .ra-rest blockquote,.ra-rest blockquote+blockquote{padding:24px 0;border-left:0;border-bottom:1px solid var(--v-line)}
-.rb-wall{column-count:1}
+.rb-wall,.rb-wall.n2,.rb-wall.n3{grid-template-columns:minmax(0,1fr)}
 .vb-cols,.vb-cols.k2{grid-template-columns:minmax(0,1fr)}
 .vb-col,.vb-col+.vb-col{padding:26px 0;border-left:0;border-bottom:1px solid var(--v-line)}
 .fb-grid{grid-template-columns:minmax(0,1fr);gap:32px}
@@ -361,7 +372,6 @@ h1{font-size:clamp(32px,9.5vw,44px)}
 .sb-grid,.sb-grid.g2,.sb-grid.g4{grid-template-columns:minmax(0,1fr)}
 .sb-work .sb-ph{max-width:78%}
 .sb-work:nth-child(even) .sb-ph{margin-left:auto}
-.wall-cols{column-count:2}
 .vc-ph{max-width:200px}
 .va-frame{max-width:300px}
 }
@@ -427,16 +437,21 @@ a.is-wa:hover{filter:brightness(1.06)}
 </div>
 </section>
 
-<section class="block sv-c" id="servicios">
-<div class="wrap">
+<section class="block sv-a" id="servicios">
+<div class="wrap sa">
+<div class="sa-head">
 <div class="sh reveal"><p class="lb">Servicios</p><h2>Lo que hacemos</h2><p class="si">Escribinos y te contamos precios y horarios libres.</p></div>
-<div class="sc-list">
-<article class="sc-row reveal plain"><div class="sc-num" aria-hidden="true">01</div><div class="sc-lab"><p class="cp"><span>Obra 01</span></p><h3>Extensiones de pestañas</h3><p>Personalizadas, a la medida de cada mirada.</p><div class="sc-foot"><a class="ask" href="https://wa.me/59891698394?text=Hola%2C%20quer%C3%ADa%20consultar%20por%20extensiones%20de%20pesta%C3%B1as." aria-label="Extensiones de pestañas: Pedir turno por WhatsApp"><span class="wa-mini" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>Pedir turno</a></div></div></article>
-<article class="sc-row reveal flip plain"><div class="sc-num" aria-hidden="true">02</div><div class="sc-lab"><p class="cp"><span>Obra 02</span></p><h3>Formación para lashistas</h3><p>Cursos para futuras lashistas.</p><div class="sc-foot"><a class="ask" href="https://wa.me/59891698394?text=Hola%2C%20quer%C3%ADa%20consultar%20por%20formaci%C3%B3n%20para%20lashistas." aria-label="Formación para lashistas: Pedir turno por WhatsApp"><span class="wa-mini" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>Pedir turno</a></div></div></article>
+<a class="btn btn-solid" href="https://wa.me/59891698394?text=Hola%2C%20quer%C3%ADa%20pedir%20un%20turno."><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span>Pedir turno por WhatsApp</span></a>
+</div>
+<div class="sa-main">
+<ol class="sa-list">
+<li class="sa-row reveal"><span class="no">01</span><div class="sa-txt"><h3>Extensiones de pestañas</h3><p>Personalizadas, a la medida de cada mirada.</p></div><div class="sa-end"><a class="ask" href="https://wa.me/59891698394?text=Hola%2C%20quer%C3%ADa%20consultar%20por%20extensiones%20de%20pesta%C3%B1as." aria-label="Extensiones de pestañas: Pedir turno por WhatsApp"><span class="wa-mini" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>Pedir turno</a></div></li>
+<li class="sa-row reveal"><span class="no">02</span><div class="sa-txt"><h3>Formación para lashistas</h3><p>Cursos para futuras lashistas.</p></div><div class="sa-end"><a class="ask" href="https://wa.me/59891698394?text=Hola%2C%20quer%C3%ADa%20consultar%20por%20formaci%C3%B3n%20para%20lashistas." aria-label="Formación para lashistas: Pedir turno por WhatsApp"><span class="wa-mini" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>Pedir turno</a></div></li>
+</ol>
+
+</div>
 </div>
 
-
-</div>
 </section>
 
 <section class="block band st-b" id="como-pedir">
@@ -457,7 +472,7 @@ a.is-wa:hover{filter:brightness(1.06)}
 <div class="wrap">
 <div class="sh reveal"><p class="lb">★ 5,0 · 15 opiniones en Google</p><h2>Lo que dicen los clientes</h2></div>
 <div class="rb-wall n4">
-<blockquote class="rb-plaque reveal lead"><p>Luana es una excelente profesional. Me encantó su trabajo, muy natural y quedan divinas las pestañas. Muy prolija y cuidadosa al momento de aplicarlas. Recomiendo absolutamente!</p><footer>Karina A. · Google</footer></blockquote>
+<blockquote class="rb-plaque reveal feat"><p>Luana es una excelente profesional. Me encantó su trabajo, muy natural y quedan divinas las pestañas. Muy prolija y cuidadosa al momento de aplicarlas. Recomiendo absolutamente!</p><footer>Karina A. · Google</footer></blockquote>
 <blockquote class="rb-plaque reveal"><p>Me atendí con Lu durante varios meses y fue una excelente experiencia. Hace años que me hago extensiones de pestañas y pasé por distintas lashistas, así que puedo decir que trabaja con mucho cuidado y materiales de muy buena calidad. Se nota la técnica y la experiencia. Además, destaco muchísimo su profesionalismo y calidad humana: después de mudarme y tener una mala colocación con otra lashista, se tomó el tiempo de ayudarme, explicarme qué había pasado y hasta recomendarme una lashista de confianza en Colonia, todo de forma desinteresada. Súper recomendable!! Siempre me dejaste hermosa Lu, te voy a extrañar!! 🫶✨</p><footer>Micaela R. · Google</footer></blockquote>
 <blockquote class="rb-plaque reveal"><p>La verdad que le doy 5 estrellas, porq es excelente, detallista, muy profesional, trata siempre de buscar que la clienta encuentre su mejor perfíl en las pestañas, gracias!!</p><footer>Carla P. · Google</footer></blockquote>
 <blockquote class="rb-plaque reveal"><p>La atención excelente y la duración de las pestañas amo! Es por acá chicassss</p><footer>Agustina A. · Google</footer></blockquote>

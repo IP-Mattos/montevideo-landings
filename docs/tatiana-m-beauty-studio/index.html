@@ -43,19 +43,20 @@ section[id]{scroll-margin-top:84px}
 .g-dark{--gbg:var(--v-brand-dark);--ac:var(--v-on-dark);--on-ac:var(--v-brand-dark);--act:var(--v-on-dark);--mut:color-mix(in srgb,var(--v-on-dark) 80%,var(--v-brand-dark));--ln:color-mix(in srgb,var(--v-on-dark) 30%,transparent);--card:color-mix(in srgb,var(--v-on-dark) 9%,var(--v-brand-dark));--tgb:color-mix(in srgb,var(--v-on-dark) 18%,var(--v-brand-dark));--tgt:var(--v-on-dark);background:var(--gbg);color:var(--v-on-dark)}
 .band.g-band,.band.g-dark{background:var(--gbg)}
 
-/* The name tag: a pill rounded at the ring end, with a punched hole and a small ring through it */
-.tg{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:6px;padding:7px 14px 7px 36px;min-height:34px;font-family:var(--v-display);font-weight:600;font-size:14px;line-height:1.25;color:var(--tgt);letter-spacing:0}
-.tg::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:999px 14px 14px 999px;background:var(--tgb);-webkit-mask:radial-gradient(circle at 17px 50%,#0000 0 4.5px,#000 5px);mask:radial-gradient(circle at 17px 50%,#0000 0 4.5px,#000 5px)}
-.tg::after{content:"";position:absolute;left:10px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;border:2px solid color-mix(in srgb,var(--tgt) 55%,transparent)}
+/* The name tag: a plain pill (a punched hole with a ring read as an empty radio button) */
+.tg{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:6px;padding:7px 16px;min-height:34px;font-family:var(--v-display);font-weight:600;font-size:14px;line-height:1.25;color:var(--tgt);letter-spacing:0}
+.tg::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:999px;background:var(--tgb)}
 .tg b{font-weight:800}
-.tg-lg{font-size:16px;padding:10px 18px 10px 44px;min-height:42px}
-.tg-lg::before{-webkit-mask:radial-gradient(circle at 21px 50%,#0000 0 5.5px,#000 6px);mask:radial-gradient(circle at 21px 50%,#0000 0 5.5px,#000 6px)}
-.tg-lg::after{left:13px;width:16px;height:16px;margin-top:-8px}
-.tg-n{padding:6px 14px 6px 34px;font-weight:800}
+.tg-lg{font-size:16px;padding:10px 20px;min-height:42px}
+.tg-n{padding:6px 14px;font-weight:800}
 .tg-price{font-weight:800}
 .kick{margin-bottom:20px}
 .kick .tg{font-size:14px}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.chips .k{font-family:var(--v-body);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.chips .tg{padding-left:12px}
+.chips .ic{display:inline-flex;flex:none;align-items:center;justify-content:center;width:24px;height:24px;margin-right:2px;border-radius:50%;background:var(--v-surface);color:var(--act)}
+.chips .ic.star{color:var(--v-stars)}
 
 /* A hanging tag (rounded body, hole near the top, ring on the hole) */
 .tc{position:relative;isolation:isolate;padding:54px 18px 20px;text-align:left}
@@ -454,7 +455,7 @@ a.is-wa:hover{filter:brightness(1.06)}
 </div>
 <div class="hb-ph two"><div class="fr p1"><img src="img/op-39b5ac86f36646c08e0a4626cef073a5.jpg" alt="Foto de Tatiana M Beauty Studio" fetchpriority="high"></div><div class="fr p2"><img src="img/op-d1e43a0aa328480bb339cc2bc0778c1f.jpg" alt="Foto de Tatiana M Beauty Studio" loading="lazy"></div></div>
 </div>
-<div class="wrap"><ul class="chips"><li class="tg"><b>19 opiniones en Google</b> 5,0 de 5</li><li class="tg"><b>Dónde</b> Cayetano Silva 4198</li><li class="tg"><b>Turnos</b> Por WhatsApp o Instagram</li></ul></div>
+<div class="wrap"><ul class="chips"><li class="tg"><span class="ic star"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.9z"/></svg></span><span class="k">19 opiniones en Google</span> <b>5,0 de 5</b></li><li class="tg"><span class="ic pin"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span><span class="k">Dónde</span> <b>Cayetano Silva 4198</b></li><li class="tg"><span class="ic wa"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span><span class="k">Turnos</span> <b>Por WhatsApp o Instagram</b></li></ul></div>
 </section>
 
 <section class="band g-band sv-a" id="servicios">

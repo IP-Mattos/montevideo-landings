@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-rubro="taller" data-design="penumbra-acbaca">
+<html lang="es" data-rubro="taller" data-design="penumbra-aaaaaa">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -259,21 +259,31 @@ section[id]{scroll-margin-top:72px}
 .line{padding:44px 0}
 }
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}}
-a.is-wa{background:#25D366!important;color:#0B3B1E!important;border-color:#25D366!important;display:inline-flex;align-items:center;justify-content:center;gap:10px}
-a.is-wa *{color:inherit!important}
-a.is-wa>svg:first-child{width:20px;height:20px;flex:none}
-a.is-wa:hover{filter:brightness(1.06)}
+a.is-wa{display:inline-flex;align-items:center;justify-content:center;gap:10px}
+a.is-wa>svg:first-child,a.is-wa>span:first-child>svg:first-child{vertical-align:middle;box-sizing:border-box;width:clamp(24px,1.5em,44px);height:clamp(24px,1.5em,44px);padding:clamp(4px,.28em,8px);border-radius:50%;background:#25D366!important;color:#fff!important;flex:none}
 :where(a.wa-card){position:relative}
 .wa-badge{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;background:#25D366;color:#0B3B1E;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none}
 .wa-badge svg{width:18px;height:18px}
 .wa-mini{display:inline-flex;align-items:center;justify-content:center;vertical-align:-6px;margin-right:6px;width:22px;height:22px;border-radius:50%;background:#25D366;color:#fff;flex:none}
 .wa-mini svg{width:14px;height:14px}
+body>*{overflow-x:clip}
+body,body *{overflow-wrap:normal!important;word-break:normal!important;hyphens:manual!important}
+html.wf-measure body,html.wf-measure body *{overflow-wrap:anywhere!important}
 a:has(>img.brand-logo){display:inline-flex;align-items:center;gap:10px;min-width:0}
 a:has(>img.brand-logo),a:has(>img.brand-logo)>*{white-space:normal;text-overflow:clip;text-wrap:balance}
 a:has(>img.brand-logo)::before{content:none!important}
 a:has(>img.brand-logo)>[aria-hidden="true"],a:has(>img.brand-logo)>.mark,a:has(>img.brand-logo)>.badge{display:none!important}
-a:has(>img.brand-logo)>.brand-name,a:has(>img.brand-logo)>.name{display:block!important;min-width:0;text-wrap:balance;overflow-wrap:anywhere}
+a:has(>img.brand-logo)>.brand-name,a:has(>img.brand-logo)>.name{display:block!important;min-width:0;text-wrap:balance}
 img.brand-logo{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:none;display:block}
+.brands-band{box-sizing:border-box;width:100%;max-width:1200px;margin:0 auto;padding:32px 24px;color:var(--v-ink)}
+.brands-band .brands-title{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--v-muted)}
+.brands-band ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.brands-band li{margin:0;padding:7px 14px;border:1px solid var(--v-line);border-radius:999px;font-size:15px;line-height:1.3;color:var(--v-ink)}
+.brands-band.with-logos ul{gap:16px 10px}
+.brands-band.with-logos li{display:flex;flex-direction:column;align-items:center;gap:8px;width:76px;padding:0;border:0;border-radius:0;font-size:13px;text-align:center}
+.brands-band .brand-ring{box-sizing:border-box;width:64px;height:64px;border-radius:50%;padding:3px;border:1px solid var(--v-line);display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+.brands-band .brand-ring img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.brands-band .brand-ring-text{font-size:20px;font-weight:700;letter-spacing:.04em;color:var(--v-muted)}
 </style>
 <style data-guard="narrow">
 @media (max-width: 359px) {
@@ -322,7 +332,7 @@ img.brand-logo{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:no
 </div>
 </section>
 
-<section class="quote q-b photo" id="frase">
+<section class="quote q-a photo" id="frase">
 <figure class="tile"><img src="img/op-82fb8b9d2e2d4fff87af14a01f137ad9.jpg" alt="Foto de MC Performance" loading="lazy"></figure>
 <div class="wrap">
 <p class="sentence reveal">Compra y venta de vehículos.</p>
@@ -330,7 +340,7 @@ img.brand-logo{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:no
 </div>
 </section>
 
-<section class="block sv-c" id="carta">
+<section class="block sv-a" id="carta">
 <div class="wrap">
 <div class="sv-head reveal"><span class="kicker">Servicios</span><h2>Lo que hacemos</h2></div>
 <ul class="rows reveal">
@@ -339,7 +349,7 @@ img.brand-logo{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:no
 </ul>
 <div class="collage n3 reveal"><figure class="tile"><img src="img/op-70d8263db0af4a26a45b2dc47e1a35b4.jpg" alt="Foto de MC Performance" loading="lazy"></figure><figure class="tile"><img src="img/op-b6169a8701bd482cb98cd25c474506f6.jpg" alt="Foto de MC Performance" loading="lazy"></figure><figure class="tile"><img src="img/op-505fd7e908c84d37a246bca26b1567e5.jpg" alt="Foto de MC Performance" loading="lazy"></figure></div>
 </div>
-</section>
+</section><div class="brands-band with-logos"><p class="brands-title">Marcas que atendemos</p><ul aria-label="Marcas que atendemos"><li><span class="brand-ring"><img src="img/op-cat-a46c561459d7428987975106392cec34.jpg" alt="Logo de Volkswagen" loading="lazy"></span><span class="brand-name">Volkswagen</span></li><li><span class="brand-ring"><img src="img/op-cat-659a6e591026430791fda04a6ac7c0fb.jpg" alt="Logo de Hyundai" loading="lazy"></span><span class="brand-name">Hyundai</span></li><li><span class="brand-ring"><img src="img/op-cat-d6e6b626fd664ea5b10d2e4b9a62ccb7.jpg" alt="Logo de Geely" loading="lazy"></span><span class="brand-name">Geely</span></li><li><span class="brand-ring"><img src="img/op-cat-5216032011f945d09d8a3d9bc971d3b6.jpg" alt="Logo de Ford" loading="lazy"></span><span class="brand-name">Ford</span></li><li><span class="brand-ring"><img src="img/op-cat-4b76e6456d8e48c8b68adf8da7855f4d.jpg" alt="Logo de Renault" loading="lazy"></span><span class="brand-name">Renault</span></li><li><span class="brand-ring"><img src="img/op-cat-6073afbcd7b841cc8e038012c1118731.jpg" alt="Logo de Chevrolet" loading="lazy"></span><span class="brand-name">Chevrolet</span></li><li><span class="brand-ring"><img src="img/op-cat-370e638a16ad4f149439f050271289eb.jpg" alt="Logo de Nissan" loading="lazy"></span><span class="brand-name">Nissan</span></li><li><span class="brand-ring"><img src="img/op-cat-b9812b4c15ac4ac49812d7a8b195b64f.jpg" alt="Logo de Fiat" loading="lazy"></span><span class="brand-name">Fiat</span></li><li><span class="brand-ring"><img src="img/op-cat-a792214511804d55a7853333c7d9767f.jpg" alt="Logo de Honda" loading="lazy"></span><span class="brand-name">Honda</span></li><li><span class="brand-ring"><img src="img/op-cat-8b787ccf5a8b43baa9aafa3ed29b79ae.jpg" alt="Logo de Toyota" loading="lazy"></span><span class="brand-name">Toyota</span></li><li><span class="brand-ring"><img src="img/op-cat-fe5723ee208a48ab8fdf7905645e97cc.jpg" alt="Logo de BYD" loading="lazy"></span><span class="brand-name">BYD</span></li><li><span class="brand-ring"><img src="img/op-cat-c1542fd594ae4e8ea10dcfc1ee6eb180.jpg" alt="Logo de Suzuki" loading="lazy"></span><span class="brand-name">Suzuki</span></li><li><span class="brand-ring"><img src="img/op-cat-b49780488953466792e568eef9fc4b6c.jpg" alt="Logo de FAW" loading="lazy"></span><span class="brand-name">FAW</span></li></ul></div>
 
 <section class="line rv-a" id="opiniones">
 <div class="wrap">
@@ -347,7 +357,7 @@ img.brand-logo{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:no
 </div>
 </section>
 
-<section class="book bk-c photo" id="reservar">
+<section class="book bk-a photo" id="reservar">
 <figure class="tile"><img src="img/op-52565a75db8c4634a38247d7c081f668.jpg" alt="MC Garage" loading="lazy"></figure>
 <div class="wrap">
 <div class="in reveal">
@@ -382,6 +392,22 @@ img.brand-logo{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:no
 (function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
 var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}})},{rootMargin:'0px 0px -8% 0px'});
 els.forEach(function(e){io.observe(e)});})();
-</script>
+</script><script>(function(){
+var root=document.documentElement,shrunk=[];
+function boxOf(el){while(el&&el!==document.body){var d=getComputedStyle(el).display;if(d!=="inline"&&d!=="contents")return el;el=el.parentElement;}return null;}
+function widestWord(el){var max=0;for(var c=el.firstChild;c;c=c.nextSibling){if(c.nodeType!==3)continue;var s=c.textContent,re=/\S+/g,m;while((m=re.exec(s))){var r=document.createRange();r.setStart(c,m.index);r.setEnd(c,m.index+m[0].length);var w=r.getBoundingClientRect().width;if(w>max)max=w;}}return max;}
+function texts(){var list=[],seen=new Set(),walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;while((n=walker.nextNode())){var el=n.parentElement;if(!el||seen.has(el)||!/\S/.test(n.textContent)||el.closest("script,style"))continue;seen.add(el);list.push(el);}return list;}
+function pass(list){
+root.classList.add("wf-measure");
+var rooms=list.map(function(el){var box=boxOf(el);if(!box)return 0;var s=getComputedStyle(box);return box.clientWidth-parseFloat(s.paddingLeft)-parseFloat(s.paddingRight);});
+root.classList.remove("wf-measure");
+var widths=list.map(widestWord),sizes=list.map(function(el){return parseFloat(getComputedStyle(el).fontSize);}),changed=false;
+list.forEach(function(el,i){var room=rooms[i],widest=widths[i];if(!(room>0)||widest<=room+0.5)return;var size=sizes[i],base=parseFloat(el.dataset.fitBase||size);el.dataset.fitBase=base;var next=Math.max(size*room/widest*0.97,base*0.45);if(next<size-0.1){el.style.fontSize=next+"px";if(shrunk.indexOf(el)<0)shrunk.push(el);changed=true;}});
+return changed;}
+function fit(){for(var i=0;i<shrunk.length;i++){shrunk[i].style.fontSize="";delete shrunk[i].dataset.fitBase;}shrunk=[];var list=texts();for(var k=0;k<4&&pass(list);k++){}}
+var timer=0;window.addEventListener("resize",function(){clearTimeout(timer);timer=setTimeout(fit,120);});
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit);}else{window.addEventListener("load",fit);}
+fit();
+})();</script>
 </body>
 </html>

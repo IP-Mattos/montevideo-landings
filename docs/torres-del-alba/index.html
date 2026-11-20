@@ -135,6 +135,20 @@ a.sv-b .card:hover,.sv-b a.card:hover{transform:none;border-color:var(--v-line)}
 .sv-b .card h3{font-size:clamp(26px,3.6vw,46px)}
 .sv-b a.card:hover h3{color:var(--v-brand-text)}
 .sv-b .price{font-size:clamp(22px,2.6vw,34px)}
+.sv-b .card{align-items:center}
+.sv-b .card .c-ph{flex:0 0 clamp(72px,10vw,120px);aspect-ratio:1;border-radius:10px}
+.sv-b .card .c-text{flex:1 1 0}
+.gallery{display:grid;gap:12px;margin-top:64px}
+.gallery figure{margin:0;overflow:hidden;border-radius:12px;background:var(--v-card);aspect-ratio:4/5}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.g-a{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g-b{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense}
+.g-b figure{aspect-ratio:1}
+.g-b figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.g-c{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g-c figure{aspect-ratio:4/3}
+.g-c figure:nth-child(3n+1){aspect-ratio:3/4;grid-row:span 2}
+.g-c figure:nth-child(3n+2),.g-c figure:nth-child(3n){aspect-ratio:4/3}
 .sv-c{background:var(--v-band)}
 .sv-c .card{background:var(--v-surface);color:var(--v-on-surface)}
 .sv-c .card p{color:var(--v-on-surface-muted)}
@@ -231,6 +245,9 @@ a.sv-b .card:hover,.sv-b a.card:hover{transform:none;border-color:var(--v-line)}
 .vc-photo{aspect-ratio:4/3}
 }
 @media (max-width:760px){
+.g-a,.g-b{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g-c{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g-c figure,.g-c figure:nth-child(n){aspect-ratio:1;grid-row:auto}
 .links{display:none}
 .nav{gap:12px}
 .hero-a .h-photo{aspect-ratio:4/3}
@@ -330,7 +347,7 @@ img.brand-logo{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:no
 <ul class="figs reveal" style="--v-n:4">
 <li class="fig"><b class="f-num"><span class="f-star" aria-hidden="true">★</span>4,9</b><span class="f-label">Calificación en Google</span></li>
 <li class="fig"><b class="f-num">108</b><span class="f-label">opiniones en Google</span></li>
-<li class="fig"><b class="f-num">6</b><span class="f-label">servicios</span></li>
+<li class="fig"><b class="f-num">5</b><span class="f-label">servicios</span></li>
 <li class="fig long"><b class="f-num">07:30 a 19:30</b><span class="f-label">Lunes a viernes</span></li>
 </ul>
 </div>
@@ -340,14 +357,14 @@ img.brand-logo{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:no
 <div class="wrap">
 <div class="head reveal"><p class="kicker">La vitrina</p><h2>Lo que vas a encontrar</h2><p class="intro">Cambia según el día. Escribinos y te decimos qué hay hoy en el mostrador.</p></div>
 <div class="duo">
-<article class="card  reveal"><span class="c-text"><h3>Panes</h3></span></article>
-<article class="card  reveal"><span class="c-text"><h3>Bizcochos</h3></span></article>
-<article class="card  reveal"><span class="c-text"><h3>Tortas y postres</h3></span></article>
-<article class="card  reveal"><span class="c-text"><h3>Empanadas</h3></span></article>
-<article class="card  reveal"><span class="c-text"><h3>Lunch y sándwiches</h3></span></article>
-<article class="card  reveal"><span class="c-text"><h3>Menú semanal</h3></span></article>
+<article class="card has-ph reveal"><span class="c-ph"><img src="img/op-18a21c13d64d41318d516629b7607105.jpg" alt="Panes" loading="lazy"></span><span class="c-text"><h3>Panes</h3></span></article>
+<article class="card has-ph reveal"><span class="c-ph"><img src="img/op-67a82dcbf91c49bda889702112c4269c.jpg" alt="Bizcochos" loading="lazy"></span><span class="c-text"><h3>Bizcochos</h3></span></article>
+<article class="card has-ph reveal"><span class="c-ph"><img src="img/op-1036f6833dd14d39bac00b64109e54d7.jpg" alt="Tortas y postres" loading="lazy"></span><span class="c-text"><h3>Tortas y postres</h3></span></article>
+<article class="card has-ph reveal"><span class="c-ph"><img src="img/op-d643993d0bf9415893bd1a35dace7b43.jpg" alt="Empanadas" loading="lazy"></span><span class="c-text"><h3>Empanadas</h3></span></article>
+<article class="card has-ph reveal"><span class="c-ph"><img src="img/op-e8006744cd76456ea6bbb4f30a45fb51.jpg" alt="Lunch y sándwiches" loading="lazy"></span><span class="c-text"><h3>Lunch y sándwiches</h3></span></article>
 </div>
 
+<div class="gallery g-c n8 reveal"><figure><img src="img/op-d963d84625214102a13eaee78ec1c3d6.jpg" alt="Foto de Torres del Alba" loading="lazy"></figure><figure><img src="img/op-258b547c2ccf41c987d7382c5b84f34b.jpg" alt="Foto de Torres del Alba" loading="lazy"></figure><figure><img src="img/op-a4c365ab27f24eedb03adb256761811b.jpg" alt="Foto de Torres del Alba" loading="lazy"></figure><figure><img src="img/op-de02c49cca58472bba68bcfa72ddf98a.jpg" alt="Foto de Torres del Alba" loading="lazy"></figure><figure><img src="img/op-7c9d3e73e6ed4b90874067806de38190.jpg" alt="Foto de Torres del Alba" loading="lazy"></figure><figure><img src="img/op-728cfce03b1f4e82aff2e50916f58a6c.jpg" alt="Foto de Torres del Alba" loading="lazy"></figure><figure><img src="img/op-74a681068c8e40a887fa7d22376d31b4.jpg" alt="Foto de Torres del Alba" loading="lazy"></figure><figure><img src="img/op-e94d55fa234d4ee889ae6d3f9b167e5d.jpg" alt="Foto de Torres del Alba" loading="lazy"></figure></div>
 </div>
 </section>
 
@@ -360,7 +377,7 @@ img.brand-logo{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:no
 
 <section class="visit vs-c has-ph" id="visita">
 <div class="wrap">
-<div class="vc-grid"><figure class="vc-photo reveal"><img src="img/op-d963d84625214102a13eaee78ec1c3d6.jpg" alt="Torres del Alba" loading="lazy"></figure><div class="vc-body"><div class="reveal"><p class="kicker">Dónde y cuándo</p><h2>Gaboto 1150</h2></div><div class="vb reveal"><h3>Dirección</h3><p>Gaboto 1150</p><p class="sub">Montevideo</p><p class="sub"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=-34.9088134,-56.1771454">Cómo llegar</a></p></div>
+<div class="vc-grid"><figure class="vc-photo reveal"><img src="img/op-81c0317ac2654e6ba239fa8fbd42d487.jpg" alt="Torres del Alba" loading="lazy"></figure><div class="vc-body"><div class="reveal"><p class="kicker">Dónde y cuándo</p><h2>Gaboto 1150</h2></div><div class="vb reveal"><h3>Dirección</h3><p>Gaboto 1150</p><p class="sub">Montevideo</p><p class="sub"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=-34.9088134,-56.1771454">Cómo llegar</a></p></div>
 <div class="vb reveal"><h3>Horario</h3><p>Lunes a viernes <span class="sub">07:30 a 19:30</span></p><p>Sábados <span class="sub">08:00 a 19:00</span></p></div>
 <div class="vb reveal"><h3>Contacto</h3><p><a href="tel:+59824184796">+598 2418 4796</a></p><p><a href="https://www.instagram.com/panaderiatorresdelalba/">@panaderiatorresdelalba</a></p></div><a class="btn" href="tel:+59824184796"><span>Llamar al +598 2418 4796</span></a></div></div>
 </div>
